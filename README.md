@@ -78,6 +78,8 @@ This project requires the following dependencies to work properly:
 
 8. Open `http://localhost:8000` in your browser to access DionaeaFR.
 
+![show.png](home.png)
+
 
 ## Contribution
 
