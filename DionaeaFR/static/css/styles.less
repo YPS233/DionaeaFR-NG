@@ -1,0 +1,313 @@
+@font-color: #000000;
+@border-color: #EEEEEE;
+@green: #7EA419;
+@purple: #6E009E;
+@black: #1B1B1B;
+@result-back: #000000;
+@result-color: #FFFFFF;
+@base-color: #FFFFFF;
+@widget-color: #EEEEEE;
+@link: #7EA419;
+@font-table: 11px;
+@border-height: 1px;
+@footer-height: 90px;
+@shadow-hard: 0px 0px 10px rgba(0,0,0,.8);
+@shadow-soft: 0px 0px 10px rgba(0,0,0,.2);
+@shadow-height: 10px;
+@padding-left: 15px;
+@padding-right: 15px;
+@padding-top: 15px;
+@padding-bottom: 15px;
+@margin-bottom: 20px;
+@margin-top: 20px;
+@content-size: 600px;
+@select-width: 140px;
+@height-map: 550px;
+
+.padding {
+	padding-left: @padding-left;
+	padding-right: @padding-right;
+	padding-top: @padding-top;
+	padding-bottom: @padding-bottom;
+}
+
+.rounded-corners (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	-webkit-box-shadow: @shadow-soft;
+	-moz-box-shadow: @shadow-soft;
+	box-shadow: @shadow-soft;
+}
+
+.rounded-bordered (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+	border: @border-height solid @border-color;
+}
+
+.rounded-top (@radius: 5px) {
+	-webkit-border-top-left-radius: @radius;
+	border-top-left-radius: @radius;
+	-webkit-border-top-right-radius: @radius;
+	border-top-right-radius: @radius;
+}
+
+.format_font (@spacing: -1px) {
+	font-family: Coolvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: inline;
+	position: relative;
+	letter-spacing: @spacing;
+	color: rgba(255, 255, 255, 1);
+}
+
+.format_font_small (@spacing: -1px) {
+	font-family: Coolvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: inline;
+	position: relative;
+	letter-spacing: @spacing;
+	color: @black;
+}
+
+.format_font_small_white (@spacing: -1px) {
+	font-family: Coolvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	display: inline;
+	position: relative;
+	letter-spacing: @spacing;
+	color: @base-color;
+}
+
+@font-face {
+	font-family: "Coolvetica";
+	src: url('../fonts/coolvetica rg.ttf') format('truetype');
+}
+
+* {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+	background-color: @base-color;
+}
+
+body:before {
+	content: "";
+	position: fixed;
+	top: -10px;
+	left: 0;
+	width: 100%;
+	height: @shadow-height;
+	-webkit-box-shadow: @shadow-hard;
+	-moz-box-shadow: @shadow-hard;
+	box-shadow: @shadow-hard;
+	z-index: 100;
+}
+
+body:after {
+	content: "";
+	position: fixed;
+	bottom: -10px;
+	left: 0;
+	width: 100%;
+	height: @shadow-height;
+	-webkit-box-shadow: @shadow-hard;
+	-moz-box-shadow: @shadow-hard;
+	box-shadow: @shadow-hard;
+	z-index: 100;
+}
+
+.page-header {
+	background-color: @green;
+	margin-top: 0px;
+	.padding;
+}
+
+h1 {
+	.format_font;
+}
+
+
+h1 small{
+	.format_font_small;
+}
+
+h2 small{
+	.format_font_small_white;
+}
+
+h4
+{
+	font-family: Coolvetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	letter-spacing: 3px;
+}
+
+a {
+	color: @link;
+}
+
+a:hover {
+	color: @link;
+}
+
+.label-important {
+	background-color: @green;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin: 0 5px;
+
+    &.disabled {
+      span,
+      a {
+        background-color: @green;
+      }
+    }
+
+    &.active {
+      a {
+        color: @green;
+      }
+    }
+
+    a {
+      display: block;
+      padding: 5px 10px;
+      color: #333;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      transition: all .3s ease;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a
+{
+	text-decoration: none;
+	background-color: @link;
+	color: white;
+	background-image: none;
+	.rounded-corners;
+}
+
+.nav > li > a:hover {
+	text-decoration: none;
+	background-color: @link;
+	color: white;
+	.rounded-corners;
+}
+
+.nav-list
+{
+	padding-bottom: 10px;
+}
+
+.sidebar-nav {
+	.rounded-corners;
+	background-color: @base-color;
+}
+
+#filter {
+	.rounded-corners;
+	background-color: @base-color;
+	margin-top: @margin-top;
+}
+
+#info {
+	.rounded-corners;
+	margin-top: @margin-top;
+	background-color: @green;
+	color: @base-color;
+	border-color: @green;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -@footer-height;
+}
+
+.table
+{
+  font-size: @font-table;
+}
+
+.table td {
+	max-width: 850px;
+	overflow-x: hidden;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+#content {
+	.rounded-corners;
+	.padding;
+	background-color: @base-color;
+	min-height: @content-size;
+	height: auto !important;
+	height: @content-size;
+	margin-bottom: @margin-bottom;
+}
+
+#resultado
+{
+	.rounded-bordered;
+	.padding;
+	background-color: @result-back;
+	color: @result-color;
+	margin-bottom: @margin-bottom;
+}
+#footer {
+	padding-top: @padding-top;
+    height: @footer-height;
+    background-color: @black;
+    color: @base-color;
+}
+
+#push {
+    height: @footer-height + 1;
+}
+
+select {
+	width: @select-width;
+}
+
+.thumbnail{
+	text-align: center;
+}
+
+.statistics{
+	color: @purple;
+}
+
+#map {
+	border: none;
+	box-shadow: none;
+	width: auto;
+	height: @height-map;
+}
+
+.btn-danger {
+	background-color: @purple;
+	background-image: none;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+	background-color: @purple;
+	background-image: none;
+}

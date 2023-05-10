@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+
+.idea/
+/DionaeaFR.sublime-project
+/DionaeaFR.sublime-workspace
+
+static/*
+DionaeaFR/settings.py
+DionaeaFR/static/GeoIP.dat
+DionaeaFR/static/GeoLiteCity.dat
+DionaeaFR/static/GeoLite2-City.mmdb
+DionaeaFR/static/GeoLite2-Country.mmdb
+
+.DS_Store

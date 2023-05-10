@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+Connections
+{% endblock %}
+{% block scripts %}
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/kendo.core.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/kendo.data.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/kendo.chart.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/kendo.fx.min.js' %}"></script>
+{% endblock %}
+{% block titlecontent %}
+Attacks
+{% endblock %}
+{% block content %}
+	{{ chartActivity }}
+{% endblock %}
+{% block info %}
+	<div class="alert alert-info" id="info">
+		Last {{ RESULTS_DAYS }} days.
+	</div>
+{% endblock %}
+{% block Lastscripts %}
+	<script type="text/javascript">
+		function Connections() {
+		    $("#content").kendoChart({
+		        dataSource: {
+		            transport: {
+		                read: {
+		                    url: "/graphs/connectionsdata/",
+		                    dataType: "json"
+		                }
+		            }
+		        },
+		        autoBind: true,
+		        title: {
+		            text: "Number of Connections"
+		        },
+		        legend: {
+		            visible: false
+		        },
+		        series: [{
+		            type: "line",
+		            color: "#6E009E",
+		            field: "value"
+		        }],
+		        axisDefaults: {
+		            labels: {
+		                font: "13px Tahoma, sans-serif"
+		            }
+		        },
+		        valueAxis: {
+		            labels: {
+		                format: "{0:N0}"
+		            }
+		        },
+		        categoryAxis: {
+		            field: "day",
+		        },
+		        tooltip: {
+		            visible: true,
+		            format: "{0:N0}"
+		        },
+		        chartArea: {
+		            background: ""
+		        }
+		    });
+		}
+
+		$(document).ready(function() {
+			Connections();
+			setInterval(Connections, 60000);
+		});
+
+	</script>
+{% endblock %}

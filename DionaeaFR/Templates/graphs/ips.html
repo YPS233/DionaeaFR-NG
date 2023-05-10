@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+IPS
+{% endblock %}
+{% block scripts %}
+	{% load static %}
+	<script type="text/javascript" src="{% static "js/kendo.core.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/kendo.data.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/kendo.chart.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/kendo.fx.min.js" %}"></script>
+{% endblock %}
+{% block titlecontent %}
+IPs
+{% endblock %}
+{% block content %}
+	{{ chartActivity }}
+{% endblock %}
+{% block info %}
+	<div class="alert alert-info" id="info">
+		Last {{ RESULTS_DAYS }} days.
+	</div>
+{% endblock %}
+{% block Lastscripts %}
+	<script type="text/javascript">
+		function IPs() {
+		    $("#content").kendoChart({
+		    	autoBind: true,
+		    	dataSource: {
+		            transport: {
+		                read: {
+		                    url: "/graphs/ipsdata/",
+		                    dataType: "json"
+		                }
+		            }
+		        },
+		        title: {
+		            text: "Top 10 IPs"
+		        },
+		        legend: {
+		            position: "bottom"
+		        },
+		        seriesDefaults: {
+		            type: "bar"
+		        },
+		        series: [{
+		            field: "value",
+		            name: "Number of Connections",
+		            color: "#6E009E"
+		        }],
+		        axisDefaults: {
+		            labels: {
+		                font: "14px Tahoma, sans-serif"
+		            }
+		        },
+		        valueAxis: {
+		            labels: {
+		                format: "{0}"
+		            }
+		        },
+		        categoryAxis: {
+		            field: "name",
+		        },
+		        tooltip: {
+		            visible: true,
+		            format: "{0}"
+		        },
+		        chartArea: {
+		            background: "",
+			    height: 570
+		        }
+		    });
+		}
+		$(document).ready(function() {
+			IPs();
+			setInterval(IPs, 60000);
+		});
+	</script>
+{% endblock %}
