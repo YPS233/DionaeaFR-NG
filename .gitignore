@@ -12,4 +12,7 @@ DionaeaFR/static/GeoLiteCity.dat
 DionaeaFR/static/GeoLite2-City.mmdb
 DionaeaFR/static/GeoLite2-Country.mmdb
 
+# Ignore virtual environment
+venv/
+
 .DS_Store
